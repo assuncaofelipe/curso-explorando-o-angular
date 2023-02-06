@@ -1,3 +1,4 @@
+import { Routes, RouterModule } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +12,24 @@ import ptBR from '@angular/common/locales/pt';
 
 registerLocaleData(ptBR, 'pt');
 
+export const routes: Routes = [
+  { path: '', redirectTo: 'extrato', pathMatch: 'full' },
+  { path: 'extrato', component: NovoExtratoComponent },
+  { path: 'nova-transferencia', component: NovaTransferenciaComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     NovaTransferenciaComponent,
-    NovoExtratoComponent
+    NovoExtratoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

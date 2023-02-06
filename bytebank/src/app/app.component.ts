@@ -13,7 +13,4 @@ export class AppComponent {
     private serviceTransferencia: TransferenciaService,
   ) { }
 
-  transferir($event) {
-    this.serviceTransferencia.addNovaTransferencia($event);
-  }
 }
