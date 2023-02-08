@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
-import { prefix } from "@fortawesome/free-solid-svg-icons";
-import { uuidv } from "uuid";
+import { IconPrefix, prefix } from "@fortawesome/free-solid-svg-icons";
+import { v4 as uuidv4 } from "uuid";
 
 @Injectable()
 export class UniqueIdService {
 
   private numberOfGeneratedIds = 0;
 
-  public generateUniqueIdWithPrefix(): string {
+  public generateUniqueIdWithPrefix(prefix: IconPrefix): string {
     if (!prefix) {
       throw Error('Prefix can not be empty');
     }
@@ -21,6 +21,7 @@ export class UniqueIdService {
   }
 
   private generateUniqueId(): string {
-    return uuidv();
+    return uuidv4();
   }
 }
+
